@@ -13,10 +13,16 @@ function App() {
   const path = window.location.pathname;
 
   if (path.startsWith("/movie/")) {
-    const movieId = path.split("/")[2];
+  const movieId = path.split("/")[2];
 
-    return <MovieDetails movieId={movieId} />;
-  }
+  return (
+    <>
+      <Navbar />
+      <MovieDetails movieId={movieId} />
+      <Footer />
+    </>
+  );
+}
 
   let page;
 
