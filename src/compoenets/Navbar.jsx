@@ -1,40 +1,106 @@
-import React from 'react';
+import React from "react";
+import {
+  FaFilm,
+  FaHome,
+  FaHeart,
+  FaBookmark,
+  FaInfoCircle,
+  FaSearch,
+} from "react-icons/fa";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">Navbar</a>
+    <nav className="navbar navbar-expand-lg movie-navbar">
+      <div className="container">
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        <a className="navbar-brand movie-logo" href="/">
+          <span className="logo-icon">
+            <FaFilm />
+          </span>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <a className="nav-link active" href="#">Home</a>
-          </li>
+          <span>
+            Movie<span className="yellow">Hub</span>
+          </span>
+        </a>
 
-          <li className="nav-item">
-            <a className="nav-link" href="#">Features</a>
-          </li>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <li className="nav-item">
-            <a className="nav-link" href="#">Pricing</a>
-          </li>
+        <div className="collapse navbar-collapse" id="navbarContent">
 
-          <li className="nav-item">
-            <a className="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
+          <ul className="navbar-nav mx-auto">
+
+            <li className="nav-item">
+              <a className="nav-link" href="/">
+                <FaHome />
+                Home
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/#movies">
+                <FaFilm />
+                Movies
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/favorites">
+                <FaHeart />
+                Favorites
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/watchlist">
+                <FaBookmark />
+                Watchlist
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/about">
+                <FaInfoCircle />
+                About
+              </a>
+            </li>
+
+          </ul>
+
+          <form
+  className="search-form"
+  onSubmit={(e) => {
+    e.preventDefault();
+
+    const query = e.target.search.value.trim();
+
+    if (query) {
+      window.location.href = `/search?query=${encodeURIComponent(query)}`;
+    }
+  }}
+>
+            <div className="search-input">
+              <FaSearch />
+
+              <input
+  type="text"
+  name="search"
+         placeholder="Search movies..."
+         />
+         </div>
+
+            <button type="submit" className="search-btn">
+              Search
+            </button>
+          </form>
+
+        </div>
       </div>
     </nav>
   );
